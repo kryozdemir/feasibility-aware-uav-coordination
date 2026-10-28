@@ -1,20 +1,3 @@
-"""
-Koşul 4: PPES + Adil Paylaşım (adjusted winner / envy-free ailesi, round-robin).
-
-Koşul 3'ün (PPES + naif en-yakın atama) üzerine, atama mantığını
-run_fair_allocation() ile değiştiriyor -- artık sadece "en yakın" değil,
-ajan-özel öncelik profiline (batarya-kritik / değer-kritik) göre adil
-bir sıralı seçim yapılıyor.
-
-YAPIŞKAN (sticky) atama: bir ajanın geçerli, hâlâ güvenli hedefi
-KORUNUR -- gereksiz yeniden atama (thrashing) önlenir. İSTİSNA: bir
-ajanın öncelik profili DEĞER-KRİTİK'ten BATARYA-KRİTİK'e geçerse
-(batarya eşiği aşıldığında), mevcut hedef -- hâlâ teknik olarak güvenli
-olsa bile -- terk edilip acil/yakın bir hedefe geçilir. Bu, gerçek bir
-güvenlik önceliklendirmesi (thrashing değil) -- ajan artık "değerli ama
-uzak" bir hedefin peşinde koşmamalı.
-"""
-
 import numpy as np
 
 from disaster_uav_env import MAX_EPISODE_STEPS, DT
