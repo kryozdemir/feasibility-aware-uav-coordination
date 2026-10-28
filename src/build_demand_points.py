@@ -1,16 +1,3 @@
-"""
-HOTOSM yıkılmış bina verisinden talep noktaları çıkarma.
-
-Adımlar:
-1. Her bina poligonunun merkezini (centroid) hesapla -> talep noktası
-2. Her bina poligonunun alanını (m^2, doğru projeksiyonda) hesapla -> talep ağırlığı
-3. 500m x 500m grid üzerinde yıkım yoğunluğunu hesapla -> bölge risk skoru
-
-Girdi:  data/raw/kahramanmaras_merkez_buildings.geojson
-Çıktı:  data/processed/demand_points.geojson
-        data/processed/risk_grid.geojson
-"""
-
 import json
 import math
 from pathlib import Path
