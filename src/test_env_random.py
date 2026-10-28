@@ -1,10 +1,4 @@
-"""
-DisasterUAVEnv'i rastgele aksiyonlarla test etme (öğrenme yok).
 
-Amaç: ortam mekaniğinin (fizik, servis kontrolü, ödül, bitiş koşulları)
-hatasız çalıştığını doğrulamak. Rastgele ajanlar tabii ki çok az talep
-servis edecek -- bu normal, henüz öğrenme yok.
-"""
 
 import numpy as np
 import matplotlib.pyplot as plt
