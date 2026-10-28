@@ -1,30 +1,3 @@
-"""
-Manager'ın atama mantığı. Öğrenmiyor, tamamen kural tabanlı.
-
-Makaledeki 4.3 bölümü "adjusted winner / envy-free" ve "batarya-kritik,
-haberleşme-kritik" profillerinden bahsediyor -- iki noktada netleştirme
-gerekiyor:
-
-1. Kullandığım yöntem gerçekte SIRALI SEÇİM (round-robin / picking
-   sequence). Adjusted-winner'ın kendisi (Brams & Taylor) 2 taraflı bir
-   algoritma, N-ajanlı senaryoya doğrudan uygulanmıyor. Round-robin aynı
-   aileden (kıskançlıksızlık hedefleyen) farklı bir yöntem, EF1
-   (Envy-Free up to 1 item) garantisi veriyor.
-
-2. İkinci profil "haberleşme-kritik" değil "değer-kritik" -- sistemde
-   haberleşme/menzil modellemesi (paket kaybı, röle ağı vs.) hiç yok,
-   gerçek bir haberleşme-tabanlı önceliklendirme kuramadım. Onun yerine
-   batarya yeterliyken değer/mesafe oranı en yüksek hedefi seçen bir
-   profil koydum.
-
-Üç profil (her manager turunda ajanın o anki durumuna göre belirlenir):
-- batarya-kritik (batarya < %50): en yakın güvenli hedef, enerji tasarrufu
-- değer-kritik (batarya >= %50): değer/mesafe oranı en yüksek hedef
-- kapsama-kritik (turda en fazla 1 ajan): az kapsanmış bölgelere zorla gönder
-
-Sıra: bataryası en düşük ajan önce seçiyor (en acil ihtiyaç önce).
-"""
-
 import numpy as np
 
 from ppes import ODDParams, prune_candidates
