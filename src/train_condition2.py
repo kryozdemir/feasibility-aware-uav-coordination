@@ -1,4 +1,4 @@
-"""Koşul 2: Naif Manager + MAPPO worker eğitimi."""
+
 
 from pathlib import Path
 import torch
