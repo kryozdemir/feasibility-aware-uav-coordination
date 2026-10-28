@@ -1,4 +1,4 @@
-"""Koşul 1 (düz MARL) ve Koşul 2 (naif manager) için uzun eğitim + karşılaştırma."""
+
 
 from pathlib import Path
 import numpy as np
