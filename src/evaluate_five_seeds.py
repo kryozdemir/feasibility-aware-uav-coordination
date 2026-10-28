@@ -1,13 +1,3 @@
-"""
-5-tohum istatistiksel protokolüyle tam metrik karşılaştırması.
-
-Her koşul (K1-K4, K4b) için 5 farklı tohumla eğitilmiş modelin her biri
-15 bölümde deterministik olarak değerlendirilir. Sonuçlar önce tohum
-içinde (15 bölüm) ortalanır, sonra TOHUMLAR ARASI ortalama±std raporlanır
--- bu, makaledeki "her koşul en az 5 farklı rastgele tohumla koşturulacak,
-ortalama±std raporlanacak" protokolüne karşılık gelir.
-"""
-
 import pickle
 from pathlib import Path
 
