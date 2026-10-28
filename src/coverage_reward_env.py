@@ -1,18 +1,3 @@
-"""
-K1c: Düz MARL + ödül fonksiyonuna gömülü kapsama teşviki.
-
-Amaç bir karşı-argümanı test etmek: "kapsamayı manager kuralına gömmek
-yerine ödüle bonus olarak eklesek, saf RL de aynı sonucu vermez miydi?"
-
-K1 ile tek farkı ödül: az kapsanan bölgelerdeki noktalara ekstra bonus
-veriyorum, ayrıca o noktalara yaklaşmayı da ayrıca şekillendiriyorum.
-Manager yok, PPES yok, atama yok -- karar tamamen worker'da.
-
-Bonus katsayısı bilinçli olarak cömert (COVERAGE_BONUS=5.0, tipik bir
-confirmed servis ödülünün ~25 katı) -- amaç "yeterince büyük bonus
-verirsek olur mu" sorusuna net cevap almak.
-"""
-
 import numpy as np
 
 from disaster_uav_env import (
