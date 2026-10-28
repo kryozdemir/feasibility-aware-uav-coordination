@@ -1,21 +1,3 @@
-"""
-TEŞHİS/DÜZELTME v3: Sabit Bölge Görevlendirmesi.
-
-Önceki iki deneme (sabit bonus, dinamik "en az kapsanan bölge" şekillendirmesi)
-başarısız oldu -- ya keşif sorunu ya da ödül kararsızlığı yüzünden.
-
-Bu versiyon farklı bir mantık kullanıyor: DEĞERİ dengelemeye çalışmıyor
-(zaten imkansız -- bir bölge tüm değerin %87'sini taşıyor), bunun yerine
-COĞRAFİ KAPSAMAYI GARANTİ ALTINA ALIYOR: her bölüm başında, 6 bölge 3
-UAV'a sabit şekilde (2'şer bölge) dağıtılıyor -- hangi ajanın hangi
-bölgeleri alacağı her bölümde rastgele karıştırılıyor (paylaşımlı
-politikanın hepsini öğrenebilmesi için).
-
-Bu atama bölüm SÜRESİNCE SABİT kalıyor (önceki dinamik versiyondaki
-kararsızlığı önlüyor). Bir ajanın gözlemi ve şekillendirmesi SADECE
-kendi bölgesindeki noktalarla sınırlı -- kendi bölgesi tükenirse
-serbest kalıyor (tüm noktalara bakabiliyor).
-"""
 
 import numpy as np
 from gymnasium import spaces
