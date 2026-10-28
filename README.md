@@ -15,7 +15,7 @@ results/    Raw evaluation result histories (.pkl) used to produce the paper's f
 
 ## Dataset
 
-The experiments are built around a disaster-response scenario centered on a depot near **36.92°N, 37.58°E** (Hatay region, Türkiye), using road-network and demand data projected to **UTM zone 37N (EPSG:32637)**.
+The experiments are built around a disaster-response scenario centered on a depot near **36.92°N, 37.58°E** (Kahramanmaraş region, Türkiye), using road-network and demand data projected to **UTM zone 37N (EPSG:32637)**.
 
 | File | Contents | Records |
 |---|---|---|
