@@ -1,11 +1,3 @@
-"""
-K4b'nin esnek gözlemini K4'ün kapsama-kritik fikriyle birleştiriyorum --
-ama K4'teki gibi bir ajanı hedefe kilitlemiyorum. Her adımda "en az
-kapsanan bölgeye en yakın" ajana o hedef için EK bir şekillendirme +
-tamamlama bonusu veriyorum (K4c'den farkı bu -- K4c sadece görünürlük +
-bonus veriyor, ek şekillendirme yok). Ajan isterse oraya gitmez ama
-artık gitmesi için hem görünürlük hem yoğun bir yön sinyali var.
-"""
 
 import functools
 
