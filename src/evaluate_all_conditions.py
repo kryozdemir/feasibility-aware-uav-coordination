@@ -1,24 +1,3 @@
-"""
-Koşul 1-4 için kapsamlı değerlendirme: eğitilmiş (deterministik) politikaları
-birden fazla bölümde çalıştırıp makaledeki metriklerin bir alt kümesini
-hesaplar.
-
-Hesaplanan metrikler:
-- Toplam teslim edilen değer (weight x confidence toplamı)
-- Teslimat başarı oranı (servis edilen / toplam talep, hem sayı hem değer bazlı)
-- Ortalama bölüm başına servis sayısı
-- Kat edilen toplam mesafe (ajan başına ortalama, metre)
-- Enerji tüketimi (ajan başına ortalama batarya kullanımı, %)
-- Çarpışma/batarya-tükenme oranı
-- Ajanlar arası adalet endeksi (Jain's index) -- her ajanın ürettiği
-  değerin ne kadar eşit dağıldığı
-- UAV kullanım yüzdesi (görevli/boşta geçen adım oranı)
-
-NOT: Bu bir "smoke test" değerlendirmesi -- N_EVAL_EPISODES küçük tutuldu
-(hesaplama süresi nedeniyle). Makaledeki asıl deneyler için 5+ seed ve
-çok daha fazla eval bölümü gerekecek.
-"""
-
 import pickle
 from pathlib import Path
 
