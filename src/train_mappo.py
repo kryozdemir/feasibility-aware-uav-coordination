@@ -1,18 +1,3 @@
-"""
-MAPPO eğitim döngüsü (Koşul 1: düz MARL, manager yok).
-
-Akış:
-1. Tek bir ortam örneğinden (vektörize değil -- basitlik için) N adım
-   deneyim topla (rollout)
-2. Merkezi kritik ile her adımın değerini (value) hesapla
-3. GAE (Generalized Advantage Estimation) ile avantajları hesapla
-4. K epoch boyunca PPO clipped-surrogate objective ile güncelle
-5. Belirli aralıklarla ilerlemeyi (ortalama ödül, servis edilen talep sayısı) logla
-
-NOT: Bu bir "smoke test" / prototip eğitimidir -- ortamın ve MAPPO
-kodunun doğru çalıştığını göstermek içindir. Makaledeki asıl deneyler
-(5+ seed, çok daha uzun eğitim) sonraki aşamada yapılacak.
-"""
 
 import time
 from pathlib import Path
