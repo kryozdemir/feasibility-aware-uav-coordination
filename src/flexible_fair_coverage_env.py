@@ -1,22 +1,3 @@
-"""
-K4b + kapsama garantisi hibriti.
-
-K4b'nin esnekliğini (worker'a K aday gösterip serbest seçim) koruyorum,
-ama gösterilen K adaydan birini her zaman "en az kapsanan bölgedeki en
-yakın güvenli nokta" olarak ayırıyorum -- ve o bölgeden bir şey
-tamamlayınca küçük bir bonus ekliyorum.
-
-Bunu neden yapıyorum: K4b'yi ilk denediğimde (sadece gözlem düzeltmesiyle)
-değer inanılmaz arttı (0.236) ama potential kapsama tam sıfıra düştü --
-worker'a uzak/düşük-değerli adayı gösteriyordum ama gitmesi için hiçbir
-sebep yoktu. Bu sefer hem görünürlük hem teşvik veriyorum.
-
-İlk region-bonus denemem (region_bonus_env.py) işe yaramamıştı çünkü
-ajan hiç o bölgeye gitmediği için bonusun var olduğunu deneyimleyip
-öğrenemiyordu (keşif sorunu). Bu sefer aday doğrudan gözlemde (yön+mesafe
-olarak) gösteriliyor, yani rastgele keşfe bağımlı değil -- ajan nereye
-gideceğini zaten biliyor, sadece gitmeye değer olduğunu öğrenmesi lazım.
-"""
 
 import numpy as np
 
