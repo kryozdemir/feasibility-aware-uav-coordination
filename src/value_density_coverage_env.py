@@ -1,0 +1,115 @@
+"""
+K2vc: Ablasyon -- K2v (value-density secim, PPES/adalet yok) + acik
+kapsama kurali (kota) eklenmis hali.
+
+Amac: K2v -> K2vc gecisi "kapsama kuralinin saf maliyetini" gosterir
+(PPES/adalet karismadan). K2vc -> K4 gecisi ise PPES + adil paylasimin
+EK etkisini izole eder.
+
+Zincir: K2 (nearest) -> K2v (+value/distance) -> K2vc (+kapsama kurali)
+-> K4 (+PPES +adil paylasim)
+"""
+
+import numpy as np
+
+from hierarchical_env import NaiveManagerUAVEnv
+from disaster_uav_env import MAX_EPISODE_STEPS, DT
+from fair_allocation import COVERAGE_AGENT_FRACTION
+
+
+class ValueDensityCoverageUAVEnv(NaiveManagerUAVEnv):
+
+    def __init__(self, n_agents: int = 3, seed: int = None, region_labels: np.ndarray = None,
+                 coverage_agent_fraction: float = COVERAGE_AGENT_FRACTION):
+        assert region_labels is not None
+        self.region_labels = region_labels
+        self.n_regions = int(region_labels.max()) + 1
+        self.coverage_agent_fraction = coverage_agent_fraction
+        super().__init__(n_agents=n_agents, seed=seed)
+        self.region_total_value = np.zeros(self.n_regions)
+        for r in range(self.n_regions):
+            m = region_labels == r
+            self.region_total_value[r] = np.sum(self.demand_weight[m] * self.demand_confidence[m])
+        self.dominant_region = int(np.argmax(self.region_total_value))
+
+    def _run_manager_assignment(self):
+        unserved_idx = list(np.where(~self.served)[0])
+        for agent in self.agents:
+            if self.assigned_target[agent] is not None and self.served[self.assigned_target[agent]]:
+                self.assigned_target[agent] = None
+
+        idle_agents = [a for a in self.agents
+                       if self.assigned_target[a] is None and self.uavs[a].state.payload_remaining > 0]
+        if not idle_agents:
+            return
+
+        already_assigned = set(v for v in self.assigned_target.values() if v is not None)
+        available = [i for i in unserved_idx if i not in already_assigned]
+        if not available:
+            for a in idle_agents:
+                self.assigned_target[a] = None
+            return
+
+        remaining_steps = max(0, MAX_EPISODE_STEPS - self.step_count)
+        max_reachable_m = remaining_steps * DT * self.uav_config.max_speed_mps * 0.8
+
+        avail_arr = np.array(available)
+        rem = np.zeros(self.n_regions)
+        for idx in avail_arr:
+            rem[self.region_labels[idx]] += self.demand_weight[idx] * self.demand_confidence[idx]
+        cov = 1.0 - np.divide(rem, self.region_total_value,
+                              out=np.ones(self.n_regions), where=self.region_total_value > 0)
+        eligible = [r for r in range(self.n_regions) if r != self.dominant_region]
+        assigned_here = set()
+
+
+        if cov[eligible].min() < 0.95:
+            under = [r for r in eligible if cov[r] <= np.median(cov[eligible])]
+            cands = avail_arr[np.isin(self.region_labels[avail_arr], under)].tolist()
+            n_cov = max(1, int(round(len(self.agents) * self.coverage_agent_fraction)))
+            for _ in range(n_cov):
+                if not cands:
+                    break
+                best_a, best_score, best_t = None, None, None
+                for agent in idle_agents:
+                    if agent in assigned_here:
+                        continue
+                    p = self.uavs[agent].state.position[:2]
+                    d = np.linalg.norm(self.demand_xy[cands] - p, axis=1)
+                    if d.min() > max_reachable_m:
+                        continue
+                    values = self.demand_weight[np.array(cands)]
+                    score = values / (d + 100.0)
+                    i = int(np.argmax(score))
+                    if best_score is None or score[i] > best_score:
+                        best_score, best_a, best_t = score[i], agent, cands[i]
+                if best_a is None:
+                    break
+                self.assigned_target[best_a] = best_t
+                assigned_here.add(best_a)
+                available.remove(best_t)
+                cands.remove(best_t)
+
+
+        for agent in idle_agents:
+            if agent in assigned_here:
+                continue
+            if not available:
+                self.assigned_target[agent] = None
+                continue
+            uav = self.uavs[agent]
+            deltas = self.demand_xy[available] - uav.state.position[:2]
+            dists = np.linalg.norm(deltas, axis=1)
+            reachable_mask = dists <= max_reachable_m
+            if reachable_mask.any():
+                pool = np.array(available)[reachable_mask]
+                pool_dists = dists[reachable_mask]
+            else:
+                pool = np.array(available)
+                pool_dists = dists
+            values = self.demand_weight[pool]
+            score = values / (pool_dists + 100.0)
+            best_i = int(np.argmax(score))
+            chosen = int(pool[best_i])
+            available.remove(chosen)
+            self.assigned_target[agent] = chosen
