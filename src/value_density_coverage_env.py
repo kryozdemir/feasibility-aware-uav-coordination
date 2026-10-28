@@ -1,14 +1,3 @@
-"""
-K2vc: Ablasyon -- K2v (value-density secim, PPES/adalet yok) + acik
-kapsama kurali (kota) eklenmis hali.
-
-Amac: K2v -> K2vc gecisi "kapsama kuralinin saf maliyetini" gosterir
-(PPES/adalet karismadan). K2vc -> K4 gecisi ise PPES + adil paylasimin
-EK etkisini izole eder.
-
-Zincir: K2 (nearest) -> K2v (+value/distance) -> K2vc (+kapsama kurali)
--> K4 (+PPES +adil paylasim)
-"""
 
 import numpy as np
 
