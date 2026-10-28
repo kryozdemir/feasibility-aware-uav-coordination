@@ -1,20 +1,3 @@
-"""
-K2c: Naif manager + kapsama-kritik kural.
-
-Kritik ablasyon testi. K4'un kapsama basarisi gercekten PPES + adil
-paylasimdan mi geliyor, yoksa sadece "her turda filonun %20'sini az
-kapsanan bolgeye zorla gonder" kuralindan mi?
-
-Bu kosul o kurali naif manager'a ekliyor, ama:
-- PPES budamasi YOK (menzil/batarya guvenlik filtresi yok)
-- adil paylasim YOK (batarya-kritik/deger-kritik profilleri yok)
-- geri kalan her sey K4 ile ayni (rotasyonlu filo, 60dk, 200Wh,
-  kapasite 10, depo yaricapi, hedefsiz kalmama) -- bunlari zaten
-  NaiveManagerUAVEnv'den miras aliyor
-
-K2c ~ K4 cikarsa: katki kapsama kuralindadir, PPES/adil paylasim
-degildir. K2c << K4 cikarsa: PPES + adil paylasim gercekten gerekli.
-"""
 
 import numpy as np
 
