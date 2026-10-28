@@ -1,19 +1,3 @@
-"""
-Checkpoint destekli MAPPO eğitim sürücüsü.
-
-Tek bir tool-call'un zaman sınırını (~250-260sn) aşan uzun eğitimleri
-(450k adım gibi) güvenle tamamlamak için: eğitim, belirli bir duvar-saati
-bütçesi içinde çalışır, bütçe dolunca TÜM durumu (actor, critic,
-optimizer'lar, ortam gözlemi, epizot geçmişi) diske kaydedip çıkar.
-Aynı komutu tekrar çalıştırdığınızda kaldığı yerden (optimizer momentumu
-dahil) devam eder -- bu, önceki "sadece actor ağırlığını kaydet, kritiği
-sıfırdan başlat" yönteminden daha doğru bir devam ettirme sağlar.
-
-Kullanım (komut satırından):
-    python3 train_checkpointed.py <condition> <seed> <total_timesteps>
-
-condition: K1, K2, K3, K4, K4b
-"""
 
 import sys
 import time
