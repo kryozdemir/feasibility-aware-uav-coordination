@@ -1,21 +1,3 @@
-"""
-Koşul 2: Naif Manager + Worker Hiyerarşisi.
-
-Manager (yavaş döngü, MANAGER_INTERVAL adımda bir çalışır):
-    Kural-tabanlı, ÖĞRENMEYEN bir atama yapar -- her UAV'a en yakın
-    servis edilmemiş (ve başka bir UAV'a henüz atanmamış) talep noktasını
-    atar (açgözlü/greedy en-yakın-komşu ataması).
-
-Worker (hızlı döngü, MAPPO ile öğrenen):
-    Artık "hangi talebe gideceğim" kararını kendisi vermiyor -- manager'ın
-    atadığı TEK hedefe nasıl en verimli şekilde ulaşacağını öğreniyor.
-    Bu, Koşul 1'deki (düz MARL) çok-hedefli seçim problemini, çok daha
-    kolay bir "hedefe git" problemine indirgiyor.
-
-Gözlem farkı (Koşul 1'e göre):
-    Eskiden: K=5 en yakın servis edilmemiş talebin bilgisi
-    Şimdi:   SADECE atanmış tek hedefin bilgisi (dx, dy, weight, confidence)
-"""
 
 from pathlib import Path
 import functools
