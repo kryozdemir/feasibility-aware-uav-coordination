@@ -1,35 +1,3 @@
-"""
-PPES (Partial Pruned Entity Structure) budama modülü.
-
-Makaledeki 4.2 bölümüne karşılık gelir:
-"SUNRISE ontolojisi (statik kavram sözlüğü) tanıtılacak. ODD ile fiziksel/
-operasyonel sınırlar belirlenecek. SES ile bu sınırların nesneler arası
-hiyerarşik/dinamik ilişkisi tanımlanacak. Behavior Oracle yaklaşımıyla
-üçünün kesişiminden PPES üretilecek, radikal/emniyetsiz senaryolar
-budanacak."
-
-Bizim basitleştirilmiş sistemimizdeki somut karşılığı:
-
-1. ONTOLOJİ (statik kavram sözlüğü): Aşağıdaki EntityType enum'u ve her
-   entity tipinin hangi güvenlik-ilgili özelliklere sahip olduğu.
-
-2. ODD (Operational Design Domain -- fiziksel/operasyonel sınırlar):
-   ODDParams dataclass'ı -- irtifa tavanı, batarya rezerv payı, vb.
-   (Bunların bir kısmı zaten UAVConfig'te vardı; PPES için ayrıca
-   "min_battery_reserve_pct" gibi güvenlik-spesifik parametreler eklendi.)
-
-3. SES (System Entity Structure -- ODD sınırlarının varlıklar arası
-   dinamik ilişkisi): compute_safe_max_range() fonksiyonu -- bir UAV'ın
-   MEVCUT durumuna (batarya, konum) göre o anki güvenli menzilini
-   hesaplıyor. Bu "dinamik" kısım -- aynı ODD parametreleri, farklı
-   UAV durumlarında farklı güvenli aday kümeleri üretiyor.
-
-4. BEHAVIOR ORACLE -> PPES: prune_candidates() fonksiyonu -- ODD+SES'in
-   kesişiminden, güvenli (gidip-dönülebilir) aday alt kümesini üretiyor.
-   Bunun dışındaki adaylar (bataryayla dönüşü garanti edilemeyen hedefler)
-   manager'ın görüş alanından tamamen ÇIKARILIYOR -- yani worker bu
-   "radikal/emniyetsiz" seçenekleri hiç göremiyor bile.
-"""
 
 from dataclasses import dataclass
 from enum import Enum, auto
