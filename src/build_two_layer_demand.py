@@ -1,26 +1,3 @@
-"""
-İki katmanlı talep noktası sistemi:
-
-1. CONFIRMED (kesin) katman: HOTOSM'nin "destroyed_building=yes" olarak
-   işaretlediği binalar. Yüksek güven, ama coğrafi olarak eksik (sadece
-   haritalanmış bölgeleri kapsar).
-
-2. POTENTIAL (tahmini) katman: Genel bina yoğunluğu yüksek ama "destroyed"
-   etiketi bulunmayan bölgeler (örn. Türkoğlu). Bu bölgeler için, iyi
-   haritalanmış bir referans bölgedeki gerçek yıkım oranı kullanılarak
-   düşük-güvenilirlikli bir tahmini talep ağırlığı atanır.
-
-Bu ayrım, PPES / adil paylaşım sisteminin kesin veri ile belirsiz veriyi
-farklı ele alabilmesi için önemlidir (makalenin "yapılandırılmamış/
-güvenilmez bilgi" temasıyla doğrudan uyumlu).
-
-Girdi:  data/raw/kahramanmaras_merkez.osm (tüm OSM verisi)
-        data/raw/kahramanmaras_merkez_buildings.geojson (sadece yıkılmışlar)
-Çıktı:  data/processed/all_buildings.geojson
-        data/processed/demand_points_v2.geojson  (confirmed + potential)
-        data/processed/coverage_grid.geojson      (haritalama eksikliği analizi)
-"""
-
 import json
 import math
 from pathlib import Path
