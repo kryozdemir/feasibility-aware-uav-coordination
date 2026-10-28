@@ -1,12 +1,3 @@
-"""
-K2v: Ablasyon -- naif manager yapisi (PPES yok, adil paylasim yok, kapsama
-kurali yok) ama secim kriteri "en yakin" degil "deger/mesafe" (value-density).
-
-Amac: K4'un n=3,5'teki degerdeki ustunlugunun ne kadari PPES+adil
-paylasim+kapsama paketinden, ne kadari sadece value-density skorlama
-mekanizmasindan geliyor -- bunu ayirt etmek. K2v, K4'un TEK bir parcasini
-(deger/mesafe secimi) izole ediyor, geri kalan her sey K2 ile ayni.
-"""
 
 import numpy as np
 
