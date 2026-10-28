@@ -1,16 +1,3 @@
-"""
-TEŞHİS TESTİ: Bölgesel kapsama bonusu.
-
-Hipotez: Ajanlar, depo çevresindeki yoğun/kolay kümeyi hiç tüketmeden
-bölüm bitiyor, bu yüzden daha uzak (ama fiziksel olarak ulaşılabilir)
-bölgelere gitmeye hiç teşvik olmuyorlar.
-
-Test: Her bölgeye (KMeans ile önceden hesaplanmış 6 bölge) İLK kez
-ulaşıldığında ekstra bir bonus ödül veriliyor. Bu, DisasterUAVEnv'in
-(K1) normal değer-bazlı ödülüne EK olarak geliyor -- amaç, ajanın en
-azından bir kez her bölgeyi "keşfetmeye" değer görüp görmediğini test
-etmek.
-"""
 
 import numpy as np
 
