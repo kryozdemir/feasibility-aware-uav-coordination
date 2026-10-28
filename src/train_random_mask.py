@@ -1,4 +1,4 @@
-"""Random vs clustered masking deneyi -- K1 ve K2, rastgele-maskeli veriyle."""
+
 import sys, time, pickle
 from pathlib import Path
 import numpy as np
