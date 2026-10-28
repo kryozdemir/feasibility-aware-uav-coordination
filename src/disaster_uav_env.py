@@ -1,32 +1,3 @@
-"""
-Çoklu ajan UAV afet lojistiği ortamı (PettingZoo ParallelEnv).
-
-Bu, karşılaştırma merdiveninin KOŞUL 1'i: "Düz MARL (hiyerarşi yok)".
-Manager katmanı yok -- her UAV kendi başına hangi talep noktasına
-gideceğine karar veriyor (öğrenerek). PPES/adil paylaşım/manager
-katmanları sonraki adımlarda bunun üzerine eklenecek.
-
-Basitleştirmeler (bu aşamada bilinçli):
-- Sabit seyir irtifasında 2D hareket (x, y kontrol ediliyor, z sabit)
-- Rüzgar şimdilik sabit/sıfır (worker fizik testinde ayrı ele alındı)
-- Talep noktası "servis edildi" sayılması: bir UAV'ın belirli bir yarıçap
-  içine girmesi yeterli (gerçekte belki "malzeme bırakma" aksiyonu olurdu,
-  şimdilik basitleştirildi)
-
-Gözlem (her ajan için):
-    [kendi pos (depoya göre, normalize), kendi hız, kendi batarya,
-     K en yakın servis edilmemiş talebin göreli pozisyonu ve ağırlığı]
-
-Aksiyon: 2D ivme (ax, ay), [-1, 1] aralığında normalize, config'teki
-    max_accel ile ölçekleniyor.
-
-Ödül (ajan başına):
-    + talep noktası servis edilirse: weight * confidence (paylaşılan ödül
-      değil, servis eden ajana veriliyor)
-    - küçük bir adım cezası (zaman/enerji verimliliğini teşvik etmek için)
-    - çarpma/batarya biterse büyük ceza
-"""
-
 from pathlib import Path
 import functools
 
