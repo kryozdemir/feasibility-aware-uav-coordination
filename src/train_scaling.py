@@ -1,5 +1,4 @@
-"""H5/H6 dogrulamasi: tutarli fizikle (rotasyonlu, 200Wh, kapasite 10, 30dk)
-coklu filo buyuklugunde K1 (koordinasyonsuz) vs K4 (koordinasyonlu) egitimi."""
+
 import sys, time, pickle
 from pathlib import Path
 import numpy as np
