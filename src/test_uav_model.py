@@ -1,17 +1,3 @@
-"""
-UAV modelini ortamdan bağımsız test etme.
-
-Senaryo: UAV, (0,0,50) konumundan başlayıp (2000, 1500, 50) hedefine doğru
-uçmaya çalışıyor. Basit bir "hedefe git" kontrolcüsü (proportional control)
-kullanıyoruz -- bu RL değil, sadece modelin fiziksel olarak doğru davrandığını
-görmek için.
-
-Kontrol edilecekler:
-1. UAV rüzgarsız ortamda hedefe ulaşabiliyor mu?
-2. Rüzgar varken yörünge nasıl sapıyor?
-3. Batarya tüketimi mantıklı bir hızda mı azalıyor?
-4. GPS gözlemi gerçek konumdan ne kadar sapıyor?
-"""
 
 import numpy as np
 import matplotlib.pyplot as plt
