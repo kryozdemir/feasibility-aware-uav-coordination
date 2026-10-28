@@ -1,4 +1,4 @@
-"""q sweep: K4 ve K2c'yi farkli kapsama-ajani oranlariyla egit."""
+
 import sys, time, pickle
 from pathlib import Path
 import numpy as np, torch
