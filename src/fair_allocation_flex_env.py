@@ -1,18 +1,3 @@
-"""
-K4 + sınırlı esneklik.
-
-Manager hâlâ PPES + adil paylaşım (batarya/değer/kapsama-kritik) ile
-çalışıyor, ama her ajana TEK hedef yerine kendi profiline göre sıralanmış
-İLK 3 adayı veriyor. Worker bu 3 arasından hangisine gideceğine kendisi
-karar veriyor.
-
-K4b'de esnekliği tamamen serbest bırakmıştım (tüm güvenli adaylardan
-top-K), kapsama çöküyordu. Burada aday havuzu hâlâ manager'ın kontrolünde
--- yani adil paylaşım disiplini duruyor, sadece son karar worker'da.
-Ayrıca ödül dengesizliğini (confidence çarpanı) düzelttikten SONRA
-deniyorum, önceki esneklik denemelerinde bu düzeltme yoktu.
-"""
-
 import functools
 
 import numpy as np
