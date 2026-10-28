@@ -1,14 +1,4 @@
-"""
-Kisa bolum (10 dk) crossover taramasi: K2 vs K4, {3,5,7,10} UAV, tek tohum.
 
-Amac: 30 dk'da gordugumuz K2>K4 gecisinin (potansiyel kapsamada, n~10-15
-arasi), 10 dk'lik siddetli kitlik rejiminde de olup olmadigini, olursa
-hangi filo buyuklugunde oldugunu bulmak.
-
-MAX_EPISODE_STEPS'i bu script icinde SADECE bu egitimler suresince 300'e
-(10 dk) cekiyoruz -- ana 30 dk konfigurasyonu bozmadan, ayri bir
-checkpoint etiketiyle (SHORT15) kaydediyoruz.
-"""
 import sys, time, pickle
 from pathlib import Path
 import numpy as np, torch
