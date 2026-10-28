@@ -1,20 +1,3 @@
-"""
-K2vcp: Ablasyon -- K2vc (value-density + kapsama kurali) + PPES eklenmis
-hali. Fair allocation / battery-critical profil DEGISMEDI (hala yok).
-
-Amac: K2vc -> K2vcp gecisi PPES'in SAF etkisini gosterir (baska hicbir
-sey degismiyor -- ayni value-density formulu, ayni kapsama kurali,
-sadece PPES filtresi eklendi). K2vcp -> K4 gecisi ise geriye kalan
-fair/profile etkisini izole eder.
-
-Tam faktoriyel zincir:
-K2   : value-density YOK, kapsama YOK, PPES YOK, fair/profil YOK
-K2v  : value-density VAR, kapsama YOK, PPES YOK, fair/profil YOK
-K2vc : value-density VAR, kapsama VAR, PPES YOK, fair/profil YOK
-K2vcp: value-density VAR, kapsama VAR, PPES VAR, fair/profil YOK
-K4   : value-density VAR, kapsama VAR, PPES VAR, fair/profil VAR
-"""
-
 import numpy as np
 
 from value_density_coverage_env import ValueDensityCoverageUAVEnv
