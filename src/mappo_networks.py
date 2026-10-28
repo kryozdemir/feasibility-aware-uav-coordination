@@ -1,20 +1,3 @@
-"""
-MAPPO için sinir ağları.
-
-Mimari (standart MAPPO -- "The Surprising Effectiveness of MAPPO" makalesindeki
-gibi):
-- Aktör: TÜM ajanlar arasında PAYLAŞIMLI parametreler (ajanlarımız homojen --
-  hepsi aynı tip UAV). Her ajan kendi lokal gözlemini görür, aksiyon üretir.
-- Kritik: MERKEZİ -- tüm ajanların gözlemlerinin birleşimini (global state)
-  görür, tek bir değer (value) üretir. Eğitim sırasında kullanılır, çalışma
-  zamanında (deployment) gerekmez -- bu "centralized training, decentralized
-  execution" (CTDE) mantığı, MARL'da standart.
-
-Aksiyon dağılımı: Diagonal Gaussian (sürekli aksiyon uzayı için). Basitlik
-için tanh-squashing YAPMIYORUZ -- aksiyonu örnekledikten sonra [-1,1]'e
-clip ediyoruz. Bu, sınırlarda hafif bir yanlılığa yol açabilir ama PPO
-implementasyonlarında sık kullanılan, kabul edilebilir bir basitleştirme.
-"""
 
 import torch
 import torch.nn as nn
