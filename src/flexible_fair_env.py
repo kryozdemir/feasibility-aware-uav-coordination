@@ -1,28 +1,3 @@
-"""
-Koşul 4b: Esnek Adil Paylaşım + kapsama yuvası.
-
-Koşul 1'in (düz MARL) worker esnekliğini koruyorum -- worker tek bir
-sabit hedefe mahkum değil, her adımda hangi adaya gideceğine kendisi
-karar veriyor. Ama gördüğü adaylar rastgele "en yakın K" değil, PPES
-ile güvenliği doğrulanmış ve değer-yoğunluğuna göre sıralanmış.
-
-Koşul 4'ün (rijit tek-hedef atama) K1'i geçememesinin nedeni worker'ın
-esnekliğini kaybetmesiydi. Ama sadece esneklik verince (aşağıdaki ilk
-denemede) değer inanılmaz arttı (0.236, K1'in üstünde) ama potansiyel
-kapsama sıfıra düştü -- worker'a uzak/düşük-değerli bir aday göstermek
-onu oraya gitmeye ikna etmiyor, hiçbir teşvik yok çünkü.
-
-Bu yüzden iki şey ekliyorum:
-1. K adaydan biri her zaman "en az kapsanan bölgedeki en yakın güvenli
-   nokta" olacak şekilde ayrılıyor (zorunlu atama değil, sadece
-   görünürlük -- worker isterse gitmeyebilir).
-2. Bir bölgeye o bölümde İLK kez ulaşılınca küçük bir ekstra bonus
-   veriliyor. Daha önce (region_bonus_env.py) sadece bonusla denemiştim,
-   işe yaramamıştı çünkü worker o bölgeye hiç gitmediği için bonusun
-   var olduğunu öğrenemiyordu (keşif sorunu). Şimdi aday zaten gözlemde
-   görünür durumda, yön+mesafe bilgisiyle gitmesi kolay -- bonus bu
-   sefer gerçek bir öğrenme sinyaline dönüşebilir.
-"""
 
 import functools
 import numpy as np
