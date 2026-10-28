@@ -1,18 +1,3 @@
-"""
-Yol ağını işleme:
-1. OSM XML'den NetworkX grafı çıkar
-2. En büyük bağlı bileşeni al (kopuk/izole yol parçalarını temizle)
-3. Metrik projeksiyona çevir (mesafe hesapları için)
-4. Depo konumunu en yakın yol düğümüne bağla
-5. Depo -> her talep noktası için en kısa yol mesafesini hesapla
-   (bu, koşul 0 "kamyon-yalnız referans" için gerekli olacak)
-
-Girdi:  data/raw/kahramanmaras_merkez.osm
-        data/processed/demand_points_v2.geojson
-Çıktı:  data/processed/road_network.pickle  (networkx graph, projected)
-        data/processed/demand_points_with_distance.geojson
-"""
-
 import pickle
 from pathlib import Path
 
