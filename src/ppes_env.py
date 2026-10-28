@@ -1,14 +1,3 @@
-"""
-Koşul 3: PPES + Naif Manager.
-
-Koşul 2'nin (naif manager) üzerine PPES budama katmanı ekleniyor.
-Manager artık TÜM servis edilmemiş talepler arasından değil, PPES'in
-"güvenli" (batarya ile gidip-dönülebilir) olarak işaretlediği alt küme
-içinden en yakını seçiyor.
-
-Fark: sadece _run_manager_assignment metodu değişiyor -- gözlem,
-ödül, fizik hep aynı (NaiveManagerUAVEnv'den miras).
-"""
 
 import numpy as np
 
