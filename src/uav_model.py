@@ -1,29 +1,3 @@
-"""
-Kinematik nokta-kütle UAV modeli (fizik motoru yok).
-
-Makaledeki 4.4 bölümüne karşılık gelir:
-"Kinematik/nokta-kütle bir UAV modeli (hız, rüzgar, batarya, GPS gürültüsü) kurulacak."
-
-Bu modül tek başına (ortamdan bağımsız) test edilebilir -- bir UAV nesnesi
-oluşturup, aksiyon uygulayıp, durumun beklendiği gibi evrildiğini görebiliriz.
-
-Durum (state):
-    - position: (x, y, z) metre, UTM projeksiyonunda
-    - velocity: (vx, vy, vz) m/s
-    - battery: 0-100 arası yüzde
-    - time: geçen simülasyon süresi (s)
-
-Aksiyon (action):
-    - acceleration: (ax, ay, az) m/s^2 -- UAV'ın uygulamak istediği ivme
-
-Dinamik:
-    gerçek_hız = uav_hızı + rüzgar_vektörü
-    yeni_konum = konum + gerçek_hız * dt
-    batarya_tüketimi = f(hız, rüzgar'a karşı harcanan güç, dt)
-
-Gözlem (observation, GPS gürültülü):
-    gözlemlenen_konum = gerçek_konum + N(0, gps_noise_std)
-"""
 
 from dataclasses import dataclass, field
 import numpy as np
